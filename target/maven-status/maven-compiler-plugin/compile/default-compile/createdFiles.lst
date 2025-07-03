@@ -1,0 +1,15 @@
+me\kev\battlepass\gui\BattlepassGUI$BattlepassGUIHolder.class
+me\kev\battlepass\model\PlayerData.class
+me\kev\battlepass\listener\BattlepassGUIListener.class
+me\kev\battlepass\manager\DatabaseManager.class
+me\kev\battlepass\placeholder\PlaceholderHook.class
+me\kev\battlepass\gui\BattlepassGUI.class
+me\kev\battlepass\Battlepass.class
+me\kev\battlepass\manager\ConfigManager.class
+me\kev\battlepass\model\Tier.class
+me\kev\battlepass\command\BattlepassCommand.class
+me\kev\battlepass\listener\PlayerDataListener.class
+me\kev\battlepass\manager\GUIManager.class
+me\kev\battlepass\command\BattlepassTabCompleter.class
+me\kev\battlepass\manager\BattlepassManager.class
+me\kev\battlepass\listener\PlayerXPListener.class

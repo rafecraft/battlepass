@@ -1,0 +1,628 @@
+# Battlepass Plugin Configuration
+# This file is dynamically updated by admin commands (setTier, setReward, etc.)
+
+# Plugin prefix configuration
+prefix:
+  enabled: true
+  text: "&8[&6BATTLEPASS&8]&r "  # The prefix that appears before all messages
+  # You can customize this to anything you want, e.g.:
+  # text: "&8[&bMyServer&8]&r "
+  # text: "&7» &aBattlePass &7« "
+  # text: "&8▸ &6BP &8▸&r "
+
+# Validation settings
+validation:
+  tier:
+    min: 1
+    max: 1000
+  xp:
+    min: 0
+    max: 1000000
+    warning_threshold: 1000000  # Warn if XP requirement is this high or above
+
+# Messages - Admins can customize these messages
+# Use & for color codes (e.g., &a for green, &c for red, &6 for gold)
+# Available placeholders: {player}, {xp}, {tier}, {page}, {min}, {max}
+# Note: The prefix will be automatically added to all these messages
+messages:
+  # XP and tier messages
+  xp_gained: "&aYou received +{xp} Battlepass XP!"
+  xp_lost: "&cYou lost {xp} Battlepass XP!"
+  tier_reached: "&aYou have reached Battlepass Tier {tier}!"
+  tier_max_reached: "&6&lCONGRATULATIONS! &eYou have reached the maximum Battlepass Tier {tier}!"
+  tier_demoted: "&cYou have been demoted to Battlepass Tier {tier}!"
+
+  # GUI messages
+  gui_closed_reload: "&eBattlepass GUI closed due to config reload. Please reopen with /battlepass"
+  tier_not_reached: "&cYou have not reached this tier yet!"
+  reward_already_claimed: "&eYou have already claimed this reward."
+  inventory_full: "&cYour inventory is full! Make some space and try again."
+  reward_claimed: "&aYou have claimed the reward for Tier {tier}!"
+  no_tiers_configured: "&cNo battlepass tiers configured."
+
+  # Command messages
+  config_reloaded: "&aBattlepass config reloaded."
+  config_gui_reloaded: "&aBattlepass config and GUI reloaded."
+  players_only: "&cOnly players can use this command."
+  no_permission: "&cYou do not have permission to use this command."
+  no_permission_reload: "&cYou do not have permission to reload the plugin."
+  no_permission_admin: "&cYou do not have permission to use admin commands."
+  reset_confirmation: "&cAre you sure you want to reset &lALL&r&c battlepass data? Type &e/battlepass reset confirm&c within 30 seconds to confirm."
+  page_not_exist: "&cThat page does not exist."
+
+  # Admin command messages
+  tier_range: "&cTier number must be between {min} and {max}."
+  xp_range: "&cXP required must be between {min} and {max}."
+  updated_xp_tier: "&aUpdated Tier {tier} XP requirement to {xp}."
+  set_xp_tier: "&aSet Tier {tier} XP requirement to {xp}."
+  usage_setTier: "&cUsage: /battlepass setTier <tier> <xpRequired>"
+  hold_item_main_hand: "&cYou must be holding an item in your main hand."
+  set_reward_existing: "&aUpdated reward for Tier {tier} to {item}."
+  set_reward: "&aSet reward for Tier {tier} to {item}."
+  usage_setReward: "&cUsage: /battlepass setReward <tier>"
+  reset_confirmation_player: "&cAre you sure you want to reset {player}'s battlepass data? Type &e/battlepass reset {player} confirm&c within 30 seconds to confirm."
+  reset_confirmation_all: "&cAre you sure you want to reset &lALL&r&c battlepass data? Type &e/battlepass reset confirm&c within 30 seconds to confirm."
+  confirmation_expired: "&cConfirmation expired. Please try again."
+  player_not_found: "&cPlayer {player} not found."
+  battlepass_data_reset: "&aReset battlepass data for {target}."
+  battlepass_data_reset_all: "&aReset battlepass data for all players."
+  invalid_tier: "&cInvalid tier number."
+  set_player_tier_success: "&aSet {player}'s tier to {tier}."
+  admin_no_permission: "&cYou do not have permission to use this admin command."
+  tier_not_exist: "&cTier {tier} does not exist."
+  remove_tier_success: "&aRemoved Tier {tier}."
+  remove_reward_success: "&aRemoved reward for Tier {tier}."
+  unknown_command: "&cUnknown command. Use /battlepass for help."
+
+# Tiers and rewards
+# Admin commands will add/edit these entries automatically
+# Example structure:
+# tiers:
+#   1:
+#     xp_required: 100
+#     reward:
+#       type: DIAMOND
+#       amount: 1
+#       meta:
+#         display_name: "&bShiny Diamond"
+#         lore:
+#           - "&7A special reward for reaching Tier 1!"
+#   2:
+#     xp_required: 200
+#     reward:
+#       type: CHEST
+#       amount: 1
+#       meta: {}
+
+tiers: {}
+
+# XP sources (to be implemented later)
+xp_sources:
+    PLAYER_DEATH: -5 # Set to negative to deduct XP on player death
+
+    ENTITY_KILL:
+      BAT: 1
+      BEE: 1
+      BLAZE: 5
+      CAMEL: 1
+      CAT: 1
+      CAVE_SPIDER: 3
+      CHICKEN: 1
+      COD: 1
+      COW: 1
+      CREEPER: 4
+      DOLPHIN: 1
+      DONKEY: 1
+      DROWNED: 3
+      ELDER_GUARDIAN: 8
+      ENDER_DRAGON: 10
+      ENDERMAN: 6
+      ENDERMITE: 2
+      EVOKER: 8
+      FOX: 1
+      FROG: 1
+      GHAST: 5
+      GLOW_SQUID: 1
+      GOAT: 1
+      GUARDIAN: 4
+      HOGLIN: 3
+      HORSE: 1
+      HUSK: 3
+      ILLUSIONER: 7
+      IRON_GOLEM: 7
+      LLAMA: 1
+      MAGMA_CUBE: 3
+      MOOSHROOM: 1
+      MULE: 1
+      OCELOT: 1
+      PANDA: 1
+      PARROT: 1
+      PHANTOM: 4
+      PIG: 1
+      PIGLIN: 3
+      PIGLIN_BRUTE: 6
+      PILLAGER: 4
+      POLAR_BEAR: 1
+      PUFFERFISH: 1
+      RABBIT: 1
+      RAVAGER: 8
+      SALMON: 1
+      SHEEP: 1
+      SHULKER: 5
+      SILVERFISH: 2
+      SKELETON: 3
+      SKELETON_HORSE: 1
+      SLIME: 2
+      SNIFFER: 1
+      SNOW_GOLEM: 1
+      SPIDER: 2
+      SQUID: 1
+      STRAY: 3
+      STRIDER: 1
+      TADPOLE: 1
+      TRADER_LLAMA: 1
+      TROPICAL_FISH: 1
+      TURTLE: 1
+      VEX: 4
+      VILLAGER: 1
+      VINDICATOR: 5
+      WANDERING_TRADER: 1
+      WARDEN: 10
+      WITCH: 6
+      WITHER: 10
+      WITHER_SKELETON: 7
+      WOLF: 1
+      ZOGLIN: 4
+      ZOMBIE: 3
+      ZOMBIE_HORSE: 1
+      ZOMBIE_VILLAGER: 3
+      ZOMBIFIED_PIGLIN: 3
+
+    BLOCK_BREAK:
+      STONE: 1
+      GRANITE: 1
+      POLISHED_GRANITE: 1
+      DIORITE: 1
+      POLISHED_DIORITE: 1
+      ANDESITE: 1
+      POLISHED_ANDESITE: 1
+      DEEPSLATE: 1
+      COBBLED_DEEPSLATE: 1
+      POLISHED_DEEPSLATE: 1
+      CALCITE: 1
+      TUFF: 1
+      DRIPSTONE_BLOCK: 1
+      GRASS_BLOCK: 1
+      DIRT: 1
+      COARSE_DIRT: 1
+      PODZOL: 1
+      ROOTED_DIRT: 1
+      MUD: 1
+      CRIMSON_NYLIUM: 1
+      WARPED_NYLIUM: 1
+      COBBLESTONE: 1
+      OAK_PLANKS: 1
+      SPRUCE_PLANKS: 1
+      BIRCH_PLANKS: 1
+      JUNGLE_PLANKS: 1
+      ACACIA_PLANKS: 1
+      DARK_OAK_PLANKS: 1
+      MANGROVE_PLANKS: 1
+      BAMBOO_PLANKS: 1
+      CHERRY_PLANKS: 1
+      STONE_BRICKS: 1
+      MOSSY_STONE_BRICKS: 1
+      CRACKED_STONE_BRICKS: 1
+      CHISELED_STONE_BRICKS: 1
+      PACKED_MUD: 1
+      MUD_BRICKS: 1
+      SANDSTONE: 1
+      CHISELED_SANDSTONE: 1
+      CUT_SANDSTONE: 1
+      RED_SANDSTONE: 1
+      CHISELED_RED_SANDSTONE: 1
+      CUT_RED_SANDSTONE: 1
+      SAND: 1
+      RED_SAND: 1
+      GRAVEL: 1
+      COAL_ORE: 1
+      DEEPSLATE_COAL_ORE: 2
+      IRON_ORE: 2
+      DEEPSLATE_IRON_ORE: 3
+      COPPER_ORE: 2
+      DEEPSLATE_COPPER_ORE: 3
+      GOLD_ORE: 3
+      DEEPSLATE_GOLD_ORE: 4
+      REDSTONE_ORE: 3
+      DEEPSLATE_REDSTONE_ORE: 4
+      EMERALD_ORE: 5
+      DEEPSLATE_EMERALD_ORE: 6
+      LAPIS_ORE: 3
+      DEEPSLATE_LAPIS_ORE: 4
+      DIAMOND_ORE: 6
+      DEEPSLATE_DIAMOND_ORE: 7
+      NETHER_GOLD_ORE: 2
+      NETHER_QUARTZ_ORE: 2
+      ANCIENT_DEBRIS: 8
+      OBSIDIAN: 2
+      CRYING_OBSIDIAN: 3
+      NETHERRACK: 1
+      BASALT: 1
+      POLISHED_BASALT: 1
+      SMOOTH_BASALT: 1
+      SOUL_SAND: 1
+      SOUL_SOIL: 1
+      MAGMA_BLOCK: 1
+      END_STONE: 1
+      PURPUR_BLOCK: 1
+      PURPUR_PILLAR: 1
+      PURPUR_STAIRS: 1
+      PURPUR_SLAB: 1
+      END_STONE_BRICKS: 1
+      SNOW_BLOCK: 1
+      ICE: 1
+      PACKED_ICE: 1
+      BLUE_ICE: 1
+      FROSTED_ICE: 1
+      CLAY: 1
+      TERRACOTTA: 1
+      WHITE_TERRACOTTA: 1
+      ORANGE_TERRACOTTA: 1
+      MAGENTA_TERRACOTTA: 1
+      LIGHT_BLUE_TERRACOTTA: 1
+      YELLOW_TERRACOTTA: 1
+      LIME_TERRACOTTA: 1
+      PINK_TERRACOTTA: 1
+      GRAY_TERRACOTTA: 1
+      LIGHT_GRAY_TERRACOTTA: 1
+      CYAN_TERRACOTTA: 1
+      PURPLE_TERRACOTTA: 1
+      BLUE_TERRACOTTA: 1
+      BROWN_TERRACOTTA: 1
+      GREEN_TERRACOTTA: 1
+      RED_TERRACOTTA: 1
+      BLACK_TERRACOTTA: 1
+      WHITE_CONCRETE: 1
+      ORANGE_CONCRETE: 1
+      MAGENTA_CONCRETE: 1
+      LIGHT_BLUE_CONCRETE: 1
+      YELLOW_CONCRETE: 1
+      LIME_CONCRETE: 1
+      PINK_CONCRETE: 1
+      GRAY_CONCRETE: 1
+      LIGHT_GRAY_CONCRETE: 1
+      CYAN_CONCRETE: 1
+      PURPLE_CONCRETE: 1
+      BLUE_CONCRETE: 1
+      BROWN_CONCRETE: 1
+      GREEN_CONCRETE: 1
+      RED_CONCRETE: 1
+      BLACK_CONCRETE: 1
+      WHITE_CONCRETE_POWDER: 1
+      ORANGE_CONCRETE_POWDER: 1
+      MAGENTA_CONCRETE_POWDER: 1
+      LIGHT_BLUE_CONCRETE_POWDER: 1
+      YELLOW_CONCRETE_POWDER: 1
+      LIME_CONCRETE_POWDER: 1
+      PINK_CONCRETE_POWDER: 1
+      GRAY_CONCRETE_POWDER: 1
+      LIGHT_GRAY_CONCRETE_POWDER: 1
+      CYAN_CONCRETE_POWDER: 1
+      PURPLE_CONCRETE_POWDER: 1
+      BLUE_CONCRETE_POWDER: 1
+      BROWN_CONCRETE_POWDER: 1
+      GREEN_CONCRETE_POWDER: 1
+      RED_CONCRETE_POWDER: 1
+      BLACK_CONCRETE_POWDER: 1
+      BRICKS: 1
+      BOOKSHELF: 1
+      CHISELED_BOOKSHELF: 1
+      MOSS_BLOCK: 1
+      MOSS_CARPET: 1
+      HONEYCOMB_BLOCK: 1
+      HONEY_BLOCK: 1
+      SLIME_BLOCK: 1
+      SPONGE: 1
+      WET_SPONGE: 1
+      GLOWSTONE: 2
+      SEA_LANTERN: 1
+      SHROOMLIGHT: 1
+      SCULK: 1
+      SCULK_CATALYST: 1
+      SCULK_SHRIEKER: 1
+      SCULK_SENSOR: 1
+      SCULK_VEIN: 1
+      BUDDING_AMETHYST: 1
+      AMETHYST_BLOCK: 1
+      AMETHYST_CLUSTER: 3
+      SMALL_AMETHYST_BUD: 1
+      MEDIUM_AMETHYST_BUD: 2
+      LARGE_AMETHYST_BUD: 2
+      BONE_BLOCK: 1
+      GILDED_BLACKSTONE: 3
+      CHISELED_NETHER_BRICKS: 1
+      CRACKED_NETHER_BRICKS: 1
+      NETHER_BRICKS: 1
+      RED_NETHER_BRICKS: 1
+      QUARTZ_BLOCK: 1
+      CHISELED_QUARTZ_BLOCK: 1
+      QUARTZ_PILLAR: 1
+      SMOOTH_QUARTZ: 1
+      PRISMARINE: 1
+      PRISMARINE_BRICKS: 1
+      DARK_PRISMARINE: 1
+#xp_sources:
+#  PLAYER_DEATH: 0 # Set to negative to deduct XP on player death
+#
+#  ENTITY_KILL:
+#    # List of all mobs that can give xp upon killing them.
+#    # Example: ZOMBIE: 2
+#
+#    BAT: 0
+#    BEE: 0
+#    BLAZE: 0
+#    CAMEL: 0
+#    CAT: 0
+#    CAVE_SPIDER: 0
+#    CHICKEN: 0
+#    COD: 0
+#    COW: 0
+#    CREEPER: 0
+#    DOLPHIN: 0
+#    DONKEY: 0
+#    DROWNED: 0
+#    ELDER_GUARDIAN: 0
+#    ENDER_DRAGON: 0
+#    ENDERMAN: 0
+#    ENDERMITE: 0
+#    EVOKER: 0
+#    FOX: 0
+#    FROG: 0
+#    GHAST: 0
+#    GLOW_SQUID: 0
+#    GOAT: 0
+#    GUARDIAN: 0
+#    HOGLIN: 0
+#    HORSE: 0
+#    HUSK: 0
+#    ILLUSIONER: 0
+#    IRON_GOLEM: 0
+#    LLAMA: 0
+#    MAGMA_CUBE: 0
+#    MOOSHROOM: 0
+#    MULE: 0
+#    OCELOT: 0
+#    PANDA: 0
+#    PARROT: 0
+#    PHANTOM: 0
+#    PIG: 0
+#    PIGLIN: 0
+#    PIGLIN_BRUTE: 0
+#    PILLAGER: 0
+#    POLAR_BEAR: 0
+#    PUFFERFISH: 0
+#    RABBIT: 0
+#    RAVAGER: 0
+#    SALMON: 0
+#    SHEEP: 0
+#    SHULKER: 0
+#    SILVERFISH: 0
+#    SKELETON: 0
+#    SKELETON_HORSE: 0
+#    SLIME: 0
+#    SNIFFER: 0
+#    SNOW_GOLEM: 0
+#    SPIDER: 0
+#    SQUID: 0
+#    STRAY: 0
+#    STRIDER: 0
+#    TADPOLE: 0
+#    TRADER_LLAMA: 0
+#    TROPICAL_FISH: 0
+#    TURTLE: 0
+#    VEX: 0
+#    VILLAGER: 0
+#    VINDICATOR: 0
+#    WANDERING_TRADER: 0
+#    WARDEN: 0
+#    WITCH: 0
+#    WITHER: 0
+#    WITHER_SKELETON: 0
+#    WOLF: 0
+#    ZOGLIN: 0
+#    ZOMBIE: 0
+#    ZOMBIE_HORSE: 0
+#    ZOMBIE_VILLAGER: 0
+#    ZOMBIFIED_PIGLIN: 0
+#
+#  BLOCK_BREAK:
+#    # Mining blocks (all blocks in Minecraft 1.21.6, set XP for each)
+#    STONE: 0
+#    GRANITE: 0
+#    POLISHED_GRANITE: 0
+#    DIORITE: 0
+#    POLISHED_DIORITE: 0
+#    ANDESITE: 0
+#    POLISHED_ANDESITE: 0
+#    DEEPSLATE: 0
+#    COBBLED_DEEPSLATE: 0
+#    POLISHED_DEEPSLATE: 0
+#    CALCITE: 0
+#    TUFF: 0
+#    DRIPSTONE_BLOCK: 0
+#    GRASS_BLOCK: 0
+#    DIRT: 0
+#    COARSE_DIRT: 0
+#    PODZOL: 0
+#    ROOTED_DIRT: 0
+#    MUD: 0
+#    CRIMSON_NYLIUM: 0
+#    WARPED_NYLIUM: 0
+#    COBBLESTONE: 0
+#    OAK_PLANKS: 0
+#    SPRUCE_PLANKS: 0
+#    BIRCH_PLANKS: 0
+#    JUNGLE_PLANKS: 0
+#    ACACIA_PLANKS: 0
+#    DARK_OAK_PLANKS: 0
+#    MANGROVE_PLANKS: 0
+#    BAMBOO_PLANKS: 0
+#    CHERRY_PLANKS: 0
+#    STONE_BRICKS: 0
+#    MOSSY_STONE_BRICKS: 0
+#    CRACKED_STONE_BRICKS: 0
+#    CHISELED_STONE_BRICKS: 0
+#    PACKED_MUD: 0
+#    MUD_BRICKS: 0
+#    SANDSTONE: 0
+#    CHISELED_SANDSTONE: 0
+#    CUT_SANDSTONE: 0
+#    RED_SANDSTONE: 0
+#    CHISELED_RED_SANDSTONE: 0
+#    CUT_RED_SANDSTONE: 0
+#    SAND: 0
+#    RED_SAND: 0
+#    GRAVEL: 0
+#    COAL_ORE: 0
+#    DEEPSLATE_COAL_ORE: 0
+#    IRON_ORE: 0
+#    DEEPSLATE_IRON_ORE: 0
+#    COPPER_ORE: 0
+#    DEEPSLATE_COPPER_ORE: 0
+#    GOLD_ORE: 0
+#    DEEPSLATE_GOLD_ORE: 0
+#    REDSTONE_ORE: 0
+#    DEEPSLATE_REDSTONE_ORE: 0
+#    EMERALD_ORE: 0
+#    DEEPSLATE_EMERALD_ORE: 0
+#    LAPIS_ORE: 0
+#    DEEPSLATE_LAPIS_ORE: 0
+#    DIAMOND_ORE: 0
+#    DEEPSLATE_DIAMOND_ORE: 0
+#    NETHER_GOLD_ORE: 0
+#    NETHER_QUARTZ_ORE: 0
+#    ANCIENT_DEBRIS: 0
+#    OBSIDIAN: 0
+#    CRYING_OBSIDIAN: 0
+#    NETHERRACK: 0
+#    BASALT: 0
+#    POLISHED_BASALT: 0
+#    SMOOTH_BASALT: 0
+#    SOUL_SAND: 0
+#    SOUL_SOIL: 0
+#    MAGMA_BLOCK: 0
+#    END_STONE: 0
+#    PURPUR_BLOCK: 0
+#    PURPUR_PILLAR: 0
+#    PURPUR_STAIRS: 0
+#    PURPUR_SLAB: 0
+#    END_STONE_BRICKS: 0
+#    SNOW_BLOCK: 0
+#    ICE: 0
+#    PACKED_ICE: 0
+#    BLUE_ICE: 0
+#    FROSTED_ICE: 0
+#    CLAY: 0
+#    TERRACOTTA: 0
+#    WHITE_TERRACOTTA: 0
+#    ORANGE_TERRACOTTA: 0
+#    MAGENTA_TERRACOTTA: 0
+#    LIGHT_BLUE_TERRACOTTA: 0
+#    YELLOW_TERRACOTTA: 0
+#    LIME_TERRACOTTA: 0
+#    PINK_TERRACOTTA: 0
+#    GRAY_TERRACOTTA: 0
+#    LIGHT_GRAY_TERRACOTTA: 0
+#    CYAN_TERRACOTTA: 0
+#    PURPLE_TERRACOTTA: 0
+#    BLUE_TERRACOTTA: 0
+#    BROWN_TERRACOTTA: 0
+#    GREEN_TERRACOTTA: 0
+#    RED_TERRACOTTA: 0
+#    BLACK_TERRACOTTA: 0
+#    WHITE_CONCRETE: 0
+#    ORANGE_CONCRETE: 0
+#    MAGENTA_CONCRETE: 0
+#    LIGHT_BLUE_CONCRETE: 0
+#    YELLOW_CONCRETE: 0
+#    LIME_CONCRETE: 0
+#    PINK_CONCRETE: 0
+#    GRAY_CONCRETE: 0
+#    LIGHT_GRAY_CONCRETE: 0
+#    CYAN_CONCRETE: 0
+#    PURPLE_CONCRETE: 0
+#    BLUE_CONCRETE: 0
+#    BROWN_CONCRETE: 0
+#    GREEN_CONCRETE: 0
+#    RED_CONCRETE: 0
+#    BLACK_CONCRETE: 0
+#    WHITE_CONCRETE_POWDER: 0
+#    ORANGE_CONCRETE_POWDER: 0
+#    MAGENTA_CONCRETE_POWDER: 0
+#    LIGHT_BLUE_CONCRETE_POWDER: 0
+#    YELLOW_CONCRETE_POWDER: 0
+#    LIME_CONCRETE_POWDER: 0
+#    PINK_CONCRETE_POWDER: 0
+#    GRAY_CONCRETE_POWDER: 0
+#    LIGHT_GRAY_CONCRETE_POWDER: 0
+#    CYAN_CONCRETE_POWDER: 0
+#    PURPLE_CONCRETE_POWDER: 0
+#    BLUE_CONCRETE_POWDER: 0
+#    BROWN_CONCRETE_POWDER: 0
+#    GREEN_CONCRETE_POWDER: 0
+#    RED_CONCRETE_POWDER: 0
+#    BLACK_CONCRETE_POWDER: 0
+#    BRICKS: 0
+#    BOOKSHELF: 0
+#    CHISELED_BOOKSHELF: 0
+#    MOSS_BLOCK: 0
+#    MOSS_CARPET: 0
+#    HONEYCOMB_BLOCK: 0
+#    HONEY_BLOCK: 0
+#    SLIME_BLOCK: 0
+#    SPONGE: 0
+#    WET_SPONGE: 0
+#    GLOWSTONE: 0
+#    SEA_LANTERN: 0
+#    SHROOMLIGHT: 0
+#    SCULK: 0
+#    SCULK_CATALYST: 0
+#    SCULK_SHRIEKER: 0
+#    SCULK_SENSOR: 0
+#    SCULK_VEIN: 0
+#    BUDDING_AMETHYST: 0
+#    AMETHYST_BLOCK: 0
+#    AMETHYST_CLUSTER: 0
+#    SMALL_AMETHYST_BUD: 0
+#    MEDIUM_AMETHYST_BUD: 0
+#    LARGE_AMETHYST_BUD: 0
+#    BONE_BLOCK: 0
+#    GILDED_BLACKSTONE: 0
+#    CHISELED_NETHER_BRICKS: 0
+#    CRACKED_NETHER_BRICKS: 0
+#    NETHER_BRICKS: 0
+#    RED_NETHER_BRICKS: 0
+#    QUARTZ_BLOCK: 0
+#    CHISELED_QUARTZ_BLOCK: 0
+#    QUARTZ_PILLAR: 0
+#    SMOOTH_QUARTZ: 0
+#    PRISMARINE: 0
+#    PRISMARINE_BRICKS: 0
+#    DARK_PRISMARINE: 0
+    # ...all other blocks from 1.21.6 as needed...
+# Database configuration
+database:
+  type: "sqlite"  # Change to "mysql" if you want to use MySQL
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "battlepass"
+    user: "root"
+    password: "your_password_here"
+
+# GUI color configuration
+gui:
+  colors:
+    achieved: 'GREEN'      # Color for completed tiers
+    claimable: 'YELLOW'    # Color for tiers that can be claimed
+    locked: 'GRAY'         # Color for tiers not yet reached

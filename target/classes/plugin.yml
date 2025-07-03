@@ -1,0 +1,32 @@
+name: battlepass
+version: '1.0-SNAPSHOT'
+main: me.kev.battlepass.Battlepass
+api-version: '1.21'
+authors: [ Rafe ]
+description: A modular, feature-rich battlepass plugin with XP-based progression, tiered rewards, and a modern GUI for Minecraft servers.
+commands:
+  battlepass:
+    description: Opens the battlepass GUI or manages the battlepass (admin).
+    usage: /<command> [page|setTier|setReward|reset|reload]
+    permission: battlepass.use
+    permission-message: You do not have permission to use this command.
+
+permissions:
+  battlepass.use:
+    description: Allows use of /battlepass command.
+    default: true
+  battlepass.admin:
+    description: Allows use of admin subcommands for /battlepass.
+    default: op
+  battlepass.reload:
+    description: Allows reloading the battlepass configuration.
+    default: op
+  battlepass.settier:
+    description: Allows setting a player's battlepass tier.
+    default: op
+  battlepass.setreward:
+    description: Allows setting a reward for a tier.
+    default: op
+  battlepass.reset:
+    description: Allows resetting a player's battlepass progress.
+    default: op

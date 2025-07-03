@@ -1,0 +1,14 @@
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\Battlepass.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\command\BattlepassCommand.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\command\BattlepassTabCompleter.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\gui\BattlepassGUI.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\listener\BattlepassGUIListener.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\listener\PlayerDataListener.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\listener\PlayerXPListener.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\manager\BattlepassManager.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\manager\ConfigManager.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\manager\DatabaseManager.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\manager\GUIManager.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\model\PlayerData.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\model\Tier.java
+C:\Plugins\MyPlugins\battlepass\src\main\java\me\kev\battlepass\placeholder\PlaceholderHook.java
